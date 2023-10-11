@@ -71,7 +71,7 @@
 #vis .sub-title {
   font-size:3em;
   text-anchor: middle;
-  opacity: 0.5;
+  opacity: 0;
 }
 
 .axis path,

@@ -25,6 +25,8 @@
         This fun little vulnerability uses machine learning to break into a locked smartphone using nothing but the motion sensors.
         <br/><br/>
         Here's how it works.
+        <br/>
+        <span style="font-size:0.65em;">(also pls use a desktop/laptop/horizontal-screened-device)</span>
         <br/><br/>
         <div id="keep-scrolling">
           <div id="animated-arrow" class="hover-animation">
@@ -37,17 +39,21 @@
       </section>
       <section class="step">
         <div class="title"></div>
-        The attack starts innocently, with a game of Whack-A-Mole. 
-        <br/>
-        The user taps on different parts of the screen, and the game records the occurrence of each tap.
+        The attack starts with a mobile game. We'll use Whack-A-Mole!
+        <br/><br/>
+        As the user plays, the game records as much data as it can.
       </section>
       <section class="step">
         <div class="title"></div>
-        Unbeknownst to the user, the game also records the data from their phone's air pressure sensor,
+        This includes: touch data,
       </section>
       <section class="step">
         <div class="title"></div>
-        ...as well as the three rotational motion sensors.
+        ...air pressure data,
+      </section>
+      <section class="step">
+        <div class="title"></div>
+        ...and motion sensor data.
       </section>
       <section class="step">
         <div class="title"></div>
@@ -55,21 +61,25 @@
       </section>
       <section class="step">
         <div class="title">Plan Of Attack</div>
-        Identifying the occurrence
-        
-        This signal can be trained with a windowed regression model 
+        I trained a <strong>windowed regression model</strong> on the air pressure signal.
+        <br/><br/>
+        This can then be thresholded to <strong>blindly figure out when the user taps!</strong>
       </section>
       <section class="step">
-        <div class="title">Ramping Back Up</div>
-        Unfortunately, the trend does not continue. Midway into the talk my Um's and Ah's spike. I continue to use them pretty consistently throughout the rest of the talk.
+        This gets us 50% of the way.
+        <br/><br/>
+        Next, we can use the gyroscope data to <strong>figure out how the user taps.</strong>
       </section>
       <section class="step">
-        <div class="title">The Cough Effect</div>
-        My theory is that at this critical halfway point in my talk, I heard a dry cough indicative of the audience's waning interest. This caused self-confidence to collapse and forced me out of my groove.<br/><br/>A competing theory is that I just hadn't practiced the last half of my speech as much.
+        This method is able to reliably break a device PIN code after <strong>10-12 attempts</strong>!
+        <br/><br/>
+        I have done this successfully in R, but I have yet to load and visualize the results here. 😅
       </section>
       <section class="step">
-        <div class="title">Best of Luck to Me in 2015</div>
-        The world may never know, or care, but hopefully these insights improve my speaking in 2015. Though preliminary results aren't looking so good.
+        <div class="title"></div>
+        If you're worried about this side-channel, you can relax.
+        <br/><br/>
+        Google and Apple patched it around 2012, but it still makes a neat little story! :D
       </section>
     </div>
     <div id='vis'>

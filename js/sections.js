@@ -575,7 +575,7 @@
       .attr('width', '100%')
       .attr('height', '100%')
       .attr('fill', 'white')
-      .attr('opacity', '0.62');
+      .attr('opacity', '0.82');
 
     todoContainer.append('text')
       .attr('class', 'title openvis-title')
@@ -615,12 +615,14 @@
     // activateFunctions are called each
     // time the active section changes
     activateFunctions[0] = showTitle;
-    activateFunctions[1] = showTouchAndVideo;
-    activateFunctions[2] = showPressure;
-    activateFunctions[3] = showGyroscope;
-    activateFunctions[4] = focusPressure;
-    activateFunctions[5] = showTouchConfidence;
-    activateFunctions[6] = showToDo;
+    activateFunctions[1] = showVideo;
+    activateFunctions[2] = showTouch;
+    activateFunctions[3] = showPressure;
+    activateFunctions[4] = showGyroscope;
+    activateFunctions[5] = focusPressure;
+    activateFunctions[6] = showTouchConfidence;
+    activateFunctions[7] = showTouchAndGyro;
+    activateFunctions[8] = showToDo;
     
 
     // updateFunctions are called while
@@ -667,6 +669,46 @@
       .transition()
       .attr("x", "0%")
       .delay(transition_duration);
+  }
+
+  /**
+   * shows: video
+   * hides: touch, keep-scrolling
+   */
+  function showVideo() {
+    d3.select("#keep-scrolling")
+      .transition()
+      .style("opacity", 0)
+      .duration(400);
+
+    video.style = "";
+
+    svg.select("#cover")
+      .transition()
+      .attr("x", "-80%")
+      .duration(1500);
+
+    g.select("#touchContainer")
+      .transition()
+      .attr("opacity", 0)
+      .duration(transition_duration);
+  }
+
+  /**
+   * hides: pressure graph
+   * shows: touch
+   */
+  function showTouch() {
+    g.select("#touchContainer")
+      .transition()
+      .attr("opacity", 1)
+      .duration(transition_duration);
+    
+    g.select("#pressureContainer")
+      // only need to change the opacity of the container itself
+     .transition()
+     .attr("opacity", 0)
+     .duration(transition_duration);
   }
 
   /**
@@ -862,6 +904,41 @@
       .attr("opacity", 0)
       .duration(transition_duration);
   }
+
+  
+  /**
+   * hides: air pressure, touch confidence
+   * shows and moves: gyroscope
+   */
+  function showTouchAndGyro() {
+    g.select("#gyroscopeOneContainer")
+      .attr("y", "20%");
+
+    g.select("#gyroscopeTwoContainer")
+      .attr("y", "33%");
+    
+    g.select("#gyroscopeThreeContainer")
+      .attr("y", "46%");
+    
+
+    g.selectAll("#gyroscopeOneContainer, #gyroscopeTwoContainer, #gyroscopeThreeContainer")
+      .transition()
+      .attr("opacity", 1)
+      .duration(transition_duration);
+
+      g.select("#touchConfidenceContainer")
+      .transition()
+      .attr("opacity", 0)
+      .duration(transition_duration);
+
+      g.select("#pressureContainer")
+        .transition()
+        .attr("opacity", 0)
+        .duration(transition_duration);
+
+    hideToDo();
+  }
+
 
   function showToDo() {
     console.log("showToDo()");
