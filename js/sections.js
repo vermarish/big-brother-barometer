@@ -9,7 +9,7 @@
   // constants to define the size
   // and margins of the vis area.
   var width = 600;
-  var height = 520;
+  var height = 450;
   var margin = { top: 10, left: 50, bottom: 30, right: 150 };
 
   // Keep track of which visualization
