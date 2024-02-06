@@ -41,7 +41,7 @@
         <div class="title"></div>
         The attack starts with a mobile game. We'll use Whack-A-Mole!
         <br/><br/>
-        As the user plays, the game records as much data as it can.
+        The user has no idea this innocent-looking game is secretly recording all the data it can get.
       </section>
       <section class="step">
         <div class="title"></div>
@@ -53,32 +53,38 @@
       </section>
       <section class="step">
         <div class="title"></div>
-        ...and motion sensor data.
+        ...and gyroscope motion sensor data.
       </section>
       <section class="step">
         <div class="title"></div>
         Notice how every time the user taps, there's a spike in the pressure sensor?
+        <br/><br/>
+        The <s>game developer</s> hacker can take advantage of this when the user is later typing their PIN!
       </section>
       <section class="step">
-        I trained a <strong>windowed regression model</strong> on the air pressure signal.
+        For example, I was easily able to train a <strong>windowed regression model</strong> on the air pressure signal.
         <br/><br/>
-        This can then be thresholded to <strong>blindly figure out when the user taps!</strong>
+        This can then be thresholded to blindly figure out <strong>when</strong> the user taps!
       </section>
       <section class="step">
         This gets us 50% of the way.
         <br/><br/>
-        Next, we can use the gyroscope data to <strong>figure out how the user taps.</strong>
+        Next, we can use the gyroscope data to figure out <strong>how</strong> the user taps.
       </section>
       <section class="step">
-        This method is able to reliably break a device PIN code after <strong>10-12 attempts</strong>!
-        <br/><br/>
-        I have done this successfully in R, but I have yet to load and visualize the results here. 😅
+        I have yet to document the full process of this, but if you're curious, you can read these academic research papers:
+        <ul style="font-size:0.8em;">
+          <li><a href="https://www.cs.swarthmore.edu/~aviv/papers/aviv-acsac12-accel.pdf">(2012) Practicality of Accelerometer Side Channels on Smartphones</a></li>
+          <li><a href="https://doi.org/10.1007/s12652-020-01770-0">(2020) AlphaLogger: detecting motion‑based side‑channel attack using smartphone keystrokes</a></li>
+          <li><a href="https://doi.org/10.1109/TII.2020.3045161">(2020) MAGLeak: A Learning-Based Side-Channel Attack for Password Recognition With Multiple Sensors in IIoT Environment</a></li>
+          <li><a href="https://doi.org/10.1109/ACCESS.2023.3253288">(2023) Machine Learning for PIN Side-Channel Attacks Based on Smartphone Motion Sensors</a></li>
+        </ul>
       </section>
       <section class="step">
         <div class="title"></div>
-        If you're worried about this side-channel, you can relax.
+        And if you're worried about this side-channel, you can relax. Google and Apple have been aware of this since around 2012, so this won't be exploited anytime soon on your smartphone.
         <br/><br/>
-        Google and Apple patched it around 2012, but it still makes a neat little story! :D
+        But if future companies build futuristic products, but they forget to lock down access to the motion sensors, this is how they could be hacked.
       </section>
     </div>
     <div id='vis'>

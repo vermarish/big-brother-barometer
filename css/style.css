@@ -110,7 +110,7 @@
 
 .plotLabels {
   transform: translate(0.5rem,0px);
-  font-size:1rem;
+  font-size:1.2rem;
   font-family: 'Courier New', Courier, monospace;
 }
 
@@ -120,7 +120,7 @@
 }
 
 .plotLabels > .plotTitle {
-  font-size:1.2rem;
+  font-size:1.4rem;
 }
 
 
